@@ -57,7 +57,7 @@ jobs:
           key: deps-node-modules-${{ hashFiles('**/package-lock.json') }}
       - name: Install dependencies
         if: steps.cache.outputs.cache-hit != 'true'
-        run: npm ci
+        run: npm ci 
       - name: Build website
         id: build-website
         run: npm run build
@@ -67,19 +67,11 @@ jobs:
           name: dist-files
           path: dist
 
-  # deploy:
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - name: List Files
-  #       shell: pwsh
-  #       run: |
-  #         get-location
-  #         write-host "Listing files"
-  #         get-childItem . -recurse
-  #         write-host "Done listing files"
   deploy:
     needs: build
     uses: ./.github/workflows/reuseable.yml
+    with:
+      artifact_name: dist-files
     
 
   report:
