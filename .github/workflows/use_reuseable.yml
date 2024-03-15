@@ -72,7 +72,9 @@ jobs:
     steps:
       - name: List Files
         shell: pwsh
-        run: get-childItem . -recurse
+        run: |
+          get-location
+          get-childItem . -recurse
   # deploy:
   #   needs: build
   #   #uses: ./.github/workflows/reuseable.yml
