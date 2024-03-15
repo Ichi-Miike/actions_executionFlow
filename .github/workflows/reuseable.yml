@@ -17,4 +17,4 @@ jobs:
           name: ${{ inputs.artifact_name }}
           
       - name: Output Information
-        uses: echo "Deploy & Upload"
+        run: echo "Deploy & Upload"
