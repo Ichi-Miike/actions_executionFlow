@@ -71,7 +71,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: List Files
-        run: ls -alR
+        run: find . -type f -name "*.yml"
 
   # deploy:
   #   needs: build
