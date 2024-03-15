@@ -71,11 +71,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: List Files
-        run: find . -type f -name "*.yml"
-
+        shell: pwsh
+        run: get-childItem . -recurse
   # deploy:
   #   needs: build
-  #   uses: ./.github/actions/resuseable.yml
+  #   #uses: ./.github/workflows/reuseable.yml
+  #   uses: ./test.yaml
+
 
   report:
     needs: [lint, deploy]
