@@ -82,7 +82,7 @@ jobs:
       - name: Output Run Information
         run: |
           echo "Deployment was successful"
-          echo "${{ needs.deploy.outputs.result}} }}"
+          echo "${{ needs.deploy.outputs.result }}"
 
   report:
     needs: [lint, deploy]
