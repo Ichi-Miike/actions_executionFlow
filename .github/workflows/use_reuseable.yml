@@ -1,4 +1,4 @@
-name: Website Deployment
+name: Using Re-Useable Workflow
 on:
   push:
     branches:
@@ -66,9 +66,17 @@ jobs:
         with:
           name: dist-files
           path: dist
+
   deploy:
-    needs: build
-    uses: ./.github/workflows/resueable.yml
+    runs-on: ubuntu-latest
+    steps:
+      - name: List Files
+        run: ls -alR
+
+  # deploy:
+  #   needs: build
+  #   uses: ./.github/actions/resuseable.yml
+
   report:
     needs: [lint, deploy]
     if: failure()
